@@ -76,7 +76,7 @@ businessRouter.post('/signup',verifyUser,(req,res)=>{
     if(!req.body.name||!req.body.description||!req.body.category){
         return res.status(500).json({error:"Fill all fields"})
     }
-    Business.findOne({owner:req.user})
+    Business.findOne({name:req.body.name, owner:req.user})
     .then((businessname)=>{
         if(businessname){
             return res.status(500).json({error:"You already own a store"})
