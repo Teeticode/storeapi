@@ -21,11 +21,6 @@ const businessSchema = new mongoose.Schema({
     category:{
         type:mongoose.Schema.Types.ObjectId,
         ref:"Category"
-    },
-    private:{
-        type:Boolean,
-        required:true,
-        default:false
     }
 },
 {
