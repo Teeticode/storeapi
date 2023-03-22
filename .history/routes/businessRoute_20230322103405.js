@@ -24,8 +24,8 @@ businessRouter.get('/',(req,res)=>{
     })
 })
 
-businessRouter.get('/products/:id',(req,res)=>{
-    Business.findById({_id:req.params.id})
+businessRouter.get('/products',(req,res)=>{
+    Business.findById({_id:req.body.id})
     .then(business=>{
         if(business){
             Product.find({owner:business.owner})
@@ -37,8 +37,6 @@ businessRouter.get('/products/:id',(req,res)=>{
                 }else{
                     return res.status(200).json({results:products})
                 }
-            }).catch(err=>{
-                return res.status(500).json({error:'Something went wrong'})
             })
             
             
