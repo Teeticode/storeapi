@@ -27,7 +27,6 @@ app.use(express.urlencoded({extended:true}))
 app.use(`${api}products`, productRoute);
 app.use(`${api}cloudinary`, cloudinaryRouter);
 app.use(`${api}users`, userRouter);
-app.use(`${api}cart`, cartRouter);
 app.use(`${api}categories`, categoryRouter);
 app.use(`${api}businesses`, businessRouter,express.static(path.join(__dirname, 'Images')));
 

@@ -22,7 +22,7 @@ const orderSchema = new mongoose.Schema({
     ],
     paymentResult:{
         id:{type:String},
-        status:{type:Boolean, default:false},
+        status:{type:String},
         update_time: {type:String},
         email_address: {type:String}
     }
