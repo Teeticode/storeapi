@@ -5,7 +5,7 @@ const Product = require('../models/ProductModel')
 const verifyUser = require('../middlewares/jwt')
 
 cartRouter.get('/products/:id',verifyUser,(req,res)=>{
-    Cart.findOne({owner:req.user}).populate('name description price owner')
+    Cart.find({owner:req.user}).populate('name description price owner')
     .then((cart)=>{
         if(cart){
             return res.status(200).json({results:cart})
@@ -24,25 +24,7 @@ cartRouter.post('/add',verifyUser,(req,res)=>{
     prods.push(req.body.id)
     Cart.findOne({owner:req.user})
     .then((cart)=>{
-        if(cart){
-            Cart.findByIdAndUpdate(
-                cart._id,
-                {
-                    products:req.body.id
-                },
-                {new:true}
-            )
-            .then(newCart=>{
-                if(newCat){
-                    return res.status(201).json({message:'Product Added To Cart'})
-                }else{
-                    return res.status(404).json({error:'Product not found'})
-                }
-            })
-            .catch(error=>{
-                return res.status(500).json({error:error})
-            })
-        }else{
+    
             const newCat = new Cart({
                 owner:req.user,
                 products:req.body.id
