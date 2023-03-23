@@ -22,8 +22,6 @@ cartRouter.post('/add',verifyUser,(req,res)=>{
     }
     const prods = new Array()
     prods.push(req.body.id)
-    Cart.findOne({owner:req.user})
-    .then((cart)=>{
     
             const newCat = new Cart({
                 owner:req.user,
@@ -40,10 +38,7 @@ cartRouter.post('/add',verifyUser,(req,res)=>{
             .catch(error=>{
                 return res.status(500).json({error:error})
             })
-        }
-    }).catch(error=>{
-        return res.status(500).json({error:error})
-    })
+
 })
 
 module.exports = cartRouter
