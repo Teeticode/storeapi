@@ -5,7 +5,7 @@ const Product = require('../models/ProductModel')
 const verifyUser = require('../middlewares/jwt')
 
 cartRouter.get('/products/:id',verifyUser,(req,res)=>{
-    Cart.find({owner:req.user})
+    Cart.find({owner:req.params.id})
     .then((cart)=>{
         if(cart){
             return res.status(200).json({results:cart})
