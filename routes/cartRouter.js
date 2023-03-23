@@ -28,7 +28,7 @@ cartRouter.post('/add',verifyUser,(req,res)=>{
             Cart.findByIdAndUpdate(
                 cart._id,
                 {
-                    products:prods
+                    products:req.body.id
                 },
                 {new:true}
             )
