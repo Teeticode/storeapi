@@ -29,7 +29,7 @@ categoryRouter.get('/:id', (req,res)=>{
     })
 })
 
-categoryRouter.post('/',verifyUser, (req,res)=>{
+categoryRouter.post('/', (req,res)=>{
     if(!req.body.name){
         return res.status(500).json({error:'Fill in Category name'})
 
