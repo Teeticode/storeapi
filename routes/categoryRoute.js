@@ -34,10 +34,10 @@ categoryRouter.post('/', (req,res)=>{
         return res.status(500).json({error:'Fill in Category name'})
 
     }
-    if(req.isAdmin !== true){
+  /*  if(req.isAdmin !== true){
         return res.status(401).json({error:'Your not Authorized!!!'})
-    }
-    console.log(req.user)
+    }*/
+    
     Category.findOne({name:req.body.name})
     .then((cat)=>{
         if(cat){
