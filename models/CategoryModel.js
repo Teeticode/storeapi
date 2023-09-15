@@ -1,6 +1,7 @@
 const mongoose = require('mongoose')
+mongoose.set("strictQuery", false)
 
-const categorySchema = new mongoose.Schema({
+const categorySchema = mongoose.Schema({
     name:{
         type:String,
         required:true
